@@ -1,6 +1,8 @@
-# Install PHP sqlsrv extension
+# Install PHP
 
-- Masuk ke VM Ubuntu
+## Menambahkan extension PHP sqlsrv
+
+- Jika menggunakan VM Homestead
   - buka terminal, masuk ke folder homestead
   - `vagrant ssh`
 - `cd ~`

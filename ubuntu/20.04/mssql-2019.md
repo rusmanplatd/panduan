@@ -1,6 +1,6 @@
 # Install MSSQL Server 2019
 
-- Masuk ke VM Ubuntu
+- Jika menggunakan VM Homestead
   - buka terminal, masuk ke folder homestead
   - `vagrant ssh`
 - `cd ~`
@@ -11,7 +11,7 @@
 - `sudo /opt/mssql/bin/mssql-conf setup`
   - 3 (Express)
   - Yes
-  - YourStrOngP@$$w0rd
+  - YourStrongP4$$word
 - `curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc`
 - `curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release list`
 - `sudo apt-get update`
@@ -21,7 +21,7 @@
 - `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile`
 - `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc`
 - `source ~/.bashrc`
-- `sqlcmd -S localhost -U sa -P 'YourStrOngP@$$w0rd'`
+- `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
 - `EXEC sp_configure 'remote access', 0;`
 - `GO`
 - `RECONFIGURE;`
