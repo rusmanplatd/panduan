@@ -27,3 +27,13 @@
 - `RECONFIGURE;`
 - `GO`
 - `sudo ufw allow 1433/tcp`
+
+## Membuat Database
+
+- menggunakan `sqlcmd`
+  - `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
+    - `CREATE DATABASE mydatabasename;`
+    - `GO`
+- menggunakan [adminer.hs](http://adminer.hs)
+  - login
+  - buat database

@@ -28,7 +28,25 @@
 - buka file `C:\laragon\bin\php\php-8.1.26-Win32-vs16-x64\php.ini` tambahkan `extension=sqlsrv`
 - restart webserver laragon
 
-## Laravel
+## Project Laravel
 
 - buka terminal, masuk ke folder homestead
 - `vagrant ssh`
+- `cd /var/www/html`
+- clone project laravel
+- `cp .env.example .env`
+- konfigurasi file `.env`
+  - jika menggunakan db sqlsrv
+
+    ```.env
+    DB_CONNECTION=sqlsrv
+    DB_HOST=localhost
+    DB_PORT=1433
+    DB_USERNAME=sa
+    DB_PASSWORD=YourStrongP4$$word
+    DB_DATABASE=mydatabasename
+    ```
+
+- `composer install`
+- `php artisan storage:link`
+- `php artisan migrate:fresh --seed`
