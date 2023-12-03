@@ -1,0 +1,29 @@
+# Install MSSQL Server 2019
+
+- Masuk ke VM Ubuntu
+  - buka terminal, masuk ke folder homestead
+  - `vagrant ssh`
+- `cd ~`
+- `curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc`
+- `sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list)"`
+- `sudo apt-get update`
+- `sudo apt-get install -y mssql-server`
+- `sudo /opt/mssql/bin/mssql-conf setup`
+  - 3 (Express)
+  - Yes
+  - YourStrOngP@$$w0rd
+- `curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc`
+- `curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release list`
+- `sudo apt-get update`
+- `sudo apt-get install mssql-tools unixodbc-dev`
+  - Yes
+  - Yes
+- `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile`
+- `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc`
+- `source ~/.bashrc`
+- `sqlcmd -S localhost -U sa -P 'YourStrOngP@$$w0rd'`
+- `EXEC sp_configure 'remote access', 0;`
+- `GO`
+- `RECONFIGURE;`
+- `GO`
+- `sudo ufw allow 1433/tcp`
