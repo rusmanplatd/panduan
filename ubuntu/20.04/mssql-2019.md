@@ -22,10 +22,13 @@
 - `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc`
 - `source ~/.bashrc`
 - `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
-- `EXEC sp_configure 'remote access', 0;`
-- `GO`
-- `RECONFIGURE;`
-- `GO`
+  - `CREATE DATABASE ams_patriot;`
+  - `SELECT Name from sys.databases;`
+  - `GO`
+  - `EXEC sp_configure 'remote access', 0;`
+  - `GO`
+  - `RECONFIGURE;`
+  - `GO`
 - `sudo ufw allow 1433/tcp`
 
 ## Membuat Database

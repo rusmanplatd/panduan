@@ -34,6 +34,7 @@
 - `vagrant ssh`
 - `cd /var/www/html`
 - clone project laravel
+- masuk ke project laravel dengan `cd`
 - `cp .env.example .env`
 - konfigurasi file `.env`
   - jika menggunakan db sqlsrv

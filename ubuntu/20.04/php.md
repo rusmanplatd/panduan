@@ -6,6 +6,7 @@
   - buka terminal, masuk ke folder homestead
   - `vagrant ssh`
 - `cd ~`
+- `sudo pecl config-set php_ini /etc/php/8.1/fpm/php.ini`
 - `sudo pecl install sqlsrv`
 - `sudo pecl install pdo_sqlsrv`
 - `sudo su`
