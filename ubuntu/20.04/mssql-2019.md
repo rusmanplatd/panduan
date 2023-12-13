@@ -25,6 +25,7 @@
   - `CREATE DATABASE ams_patriot;`
   - `SELECT Name from sys.databases;`
   - `GO`
+  - `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
   - `EXEC sp_configure 'remote access', 0;`
   - `GO`
   - `RECONFIGURE;`
