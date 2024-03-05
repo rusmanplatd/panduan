@@ -14,3 +14,7 @@
 - `printf "; priority=30\nextension=pdo_sqlsrv.so\n" > /etc/php/8.1/mods-available/pdo_sqlsrv.ini`
 - `exit`
 - `sudo phpenmod -v 8.1 sqlsrv pdo_sqlsrv`
+- ???
+  - `sudo cp sqlsrv.so /usr/lib/php/20210902/sqlsrv.so`
+  - `sudo cp pdo_sqlsrv.so /usr/lib/php/20210902/pdo_sqlsrv.so`
+  
