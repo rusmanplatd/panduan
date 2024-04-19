@@ -24,19 +24,44 @@
   - `CREATE DATABASE ams_patriot;`
   - `SELECT Name from sys.databases;`
   - `GO`
-  - `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
+- `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
   - `EXEC sp_configure 'remote access', 0;`
   - `GO`
   - `RECONFIGURE;`
   - `GO`
 - `sudo ufw allow 1433/tcp`
 
+## Add your user to the mssql group
+
+```sh
+sudo usermod -aG mssql $USER
+```
+
 ## Membuat Database
 
 - menggunakan `sqlcmd`
   - `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
-    - `CREATE DATABASE mydatabasename;`
+    - `CREATE DATABASE rucika;`
     - `GO`
 - menggunakan [adminer.hs](http://adminer.hs)
   - login
   - buat database
+
+## Menghapus Database
+
+- menggunakan `sqlcmd`
+  - `sqlcmd -S localhost -U sa -P 'YourStrongP4$$word'`
+    - `DROP DATABASE [rucika]`
+
+## Backup Database
+
+```sh
+sudo rm /var/opt/mssql/data/rucika.bak
+sqlcmd -S localhost -U sa -P 'YourStrongP4$$word' -Q "BACKUP DATABASE [rucika] TO  DISK = N'/var/opt/mssql/data/rucika.bak' WITH NOFORMAT, NOINIT,  NAME = N'rucika', NOSKIP, REWIND, NOUNLOAD,  STATS = 10"
+```
+
+## Restore a database
+
+```sh
+sqlcmd -S localhost -U sa -P 'YourStrongP4$$word' -Q "USE [master] RESTORE DATABASE [rucika] FROM  DISK = N'/var/opt/mssql/data/rucika.bak' WITH  FILE = 1,  NOUNLOAD,  STATS = 5"
+```
