@@ -4,7 +4,7 @@
 
 - Download
   - [page](https://www.adminer.org/#download)
-  - [fi;e](https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php)
+  - [file](https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php)
 - buat folder `adminer` di `C:\laragon\www`
 - copy file `adminer-4.8.1.php` ke `C:\laragon\www\adminer`
 - rename file `adminer-4.8.1.php` jadi `index.php`

@@ -2,5 +2,5 @@
 
 ## Host OS
 
-- [Windows](windows/1-laragon.md)
+- [Windows](windows/laragon.md)
 - Ubuntu (TBA)

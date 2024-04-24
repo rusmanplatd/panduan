@@ -1,6 +1,6 @@
 ---
 ip: "192.168.56.56"
-memory: 6000
+memory: 6666
 cpus: 6
 provider: virtualbox
 name: ubuntu2004_hs
