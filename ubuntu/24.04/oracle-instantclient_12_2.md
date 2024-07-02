@@ -1,10 +1,11 @@
 # Install instantclient_12_2
 
-- `sudo apt install systemtap-sdt-dev build-essential libaio1`
+- `sudo apt install systemtap-sdt-dev build-essential libaio1t64`
 - extract [instantclient_12_2.zip](../app/instantclient_12_2.zip)
 - `sudo mkdir /opt/oracle`
 - `sudo mv instantclient_12_2 /opt/oracle`
 - `sudo su`
+  - `ln -s /usr/lib/x86_64-linux-gnu/libaio.so.1t64 /usr/lib/x86_64-linux-gnu/libaio.so.1`
   - `cd /opt/oracle/instantclient_12_2/oci8-3.3.0`
   - `pecl config-set php_ini /etc/php/8.3/cli/php.ini`
   - `export PHP_DTRACE=yes`
