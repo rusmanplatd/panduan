@@ -12,7 +12,22 @@ sudo add-apt-repository ppa:ubuntuhandbook1/ffmpeg7 -y
 curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
 sudo apt update
-sudo apt install -y bat build-essential btop ca-certificates curl fd-find ffmpeg gcc gh git git-lfs gnupg2 htop jq libncursesw5-dev libreadline-dev lsb-release make mariadb-server neofetch nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3.12-pip python3.12-venv python3.12-dev ripgrep tmux ubuntu-keyring wget
+sudo apt install -y bat build-essential btop ca-certificates certbot curl fd-find ffmpeg gcc gh git git-lfs gnupg2 htop jq libncursesw5-dev libreadline-dev lsb-release make mariadb-server neofetch nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3-certbot-nginx python3.12-pip python3.12-venv python3.12-dev ripgrep tmux ubuntu-keyring wget
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+# git config --global credential.helper store
 # git config --global user.email "you@example.com"
 # git config --global user.name "Your Name"
 # ssh-keygen -t ed25519 -C "<comment>"
@@ -31,7 +46,17 @@ source ~/.bashrc
 # pip3 install black isort flake8 mypy pytest
 sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
 sudo apt install postgresql-18
-sudo snap install tree vlc yq yt-dlp
+# sudo -u postgres psql
+# \password postgres
+# Your_Strong_P455word
+# \q
+# CREATE USER userdb WITH PASSWORD 'Your_Strong_P455word';
+# CREATE ROLE userdb LOGIN PASSWORD 'Your_Strong_P455word';
+# GRANT ALL PRIVILEGES ON DATABASE db_name TO userdb;
+# GRANT ALL PRIVILEGES ON SCHEMA schema_name TO username;
+# GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO userdb;
+# GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO userdb;
+sudo snap install redis redisinsight tree vlc yq yt-dlp
 sudo snap install go --classic
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/air-verse/air@latest
