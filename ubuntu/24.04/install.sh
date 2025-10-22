@@ -11,8 +11,10 @@ sudo add-apt-repository ppa:git-core/ppa -y
 sudo add-apt-repository ppa:ubuntuhandbook1/ffmpeg7 -y
 curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update
-sudo apt install -y bat build-essential btop ca-certificates certbot curl fd-find ffmpeg gcc gh git git-lfs gnupg2 htop jq libncursesw5-dev libreadline-dev lsb-release make mariadb-server neofetch nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3-certbot-nginx python3.12-pip python3.12-venv python3.12-dev ripgrep tmux ubuntu-keyring wget
+sudo apt install -y bat build-essential btop ca-certificates certbot curl fd-find ffmpeg gcc gh git git-lfs gnupg2 htop jq libncursesw5-dev libreadline-dev lsb-release make mariadb-server neofetch nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3-certbot-nginx python3.12-pip python3.12-venv python3.12-dev ripgrep tmux ubuntu-keyring vagrant wget
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
