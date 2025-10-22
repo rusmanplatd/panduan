@@ -31,7 +31,7 @@ source ~/.bashrc
 # pip3 install black isort flake8 mypy pytest
 sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
 sudo apt install postgresql-18
-sudo snap install tree yq
+sudo snap install tree vlc yq yt-dlp
 sudo snap install go --classic
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/air-verse/air@latest
@@ -46,12 +46,15 @@ curl -fsSL https://deno.land/install.sh | sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 source ~/.bashrc
 nvm install 24
+nvm alias default 24
 npm i -g npm yarn pnpm @anthropic-ai/claude-code
+nvm install 22
+nvm install 20
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source ~/.cargo/env
 cd ~
 git clone https://github.com/junegunn/fzf
-~/.fzf/install --all
+~/fzf/install --all
 git clone https://github.com/jarun/nnn
 cd nnn
 sudo make install
