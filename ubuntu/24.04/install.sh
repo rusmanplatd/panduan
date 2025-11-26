@@ -14,7 +14,7 @@ echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update
-sudo apt install -y bat build-essential btop ca-certificates certbot curl fd-find ffmpeg firewall-config gcc gh git git-lfs gnupg2 htop jq libncursesw5-dev libreadline-dev lsb-release make mariadb-server maven neofetch nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3-certbot-nginx python3.12-pip python3.12-venv python3.12-dev ripgrep software-properties-common tmux ubuntu-keyring vagrant wget
+sudo apt install -y bat build-essential btop ca-certificates certbot curl fd-find ffmpeg firewall-config gcc gh git git-lfs gnupg2 htop jq libncursesw5-dev libreadline-dev lsb-release make mariadb-server maven neofetch nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3-certbot-nginx python3.12-venv python3.12-dev ripgrep software-properties-common tmux ubuntu-keyring vagrant wget
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -23,7 +23,7 @@ echo \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
@@ -43,6 +43,7 @@ sudo systemctl enable containerd.service
 # git config --global commit.gpgsign true
 echo 'alias python=python3' >> ~/.bashrc
 echo 'alias pip=pip3' >> ~/.bashrc
+curl -LsSf https://astral.sh/uv/install.sh | sh
 source ~/.bashrc
 # pip3 install --upgrade pip setuptools wheel
 # pip3 install black isort flake8 mypy pytest
@@ -61,6 +62,7 @@ sudo apt install postgresql-18
 sudo snap install pinta redis redisinsight tree vlc yq yt-dlp
 sudo snap install go microk8s --classic
 sudo snap install gradle --channel=latest/edge --classic
+go install github.com/jesseduffield/lazydocker@latest
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/air-verse/air@latest
 sudo apt install php8.4 php8.4-cli php8.4-common php8.4-fpm php8.4-mysql php8.4-mbstring php8.4-gd php8.4-imagick php8.4-bcmath php8.4-curl php8.4-dev php8.4-intl php8.4-ldap php8.4-pgsql php8.4-redis php8.4-uploadprogress php8.4-xdebug php8.4-zip php8.4-xml php8.4-odbc
