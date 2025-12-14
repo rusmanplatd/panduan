@@ -14,7 +14,7 @@ echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update
-sudo apt install -y bat build-essential btop ca-certificates certbot curl fd-find ffmpeg firewall-config gcc gh git git-lfs gnupg2 htop jq libncursesw5-dev libreadline-dev lsb-release make mariadb-server maven neofetch nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3-certbot-nginx python3.12-venv python3.12-dev ripgrep software-properties-common tmux ubuntu-keyring vagrant wget
+sudo apt install -y bat build-essential btop ca-certificates certbot clang cmake curl fd-find ffmpeg firewall-config gcc gh git git-lfs gnupg2 htop jq libgtk-3-dev libncursesw5-dev libreadline-dev lsb-release make mariadb-server maven mesa-utils neofetch ninja-build nginx nmap openjdk-21-jdk pkg-config postgresql-common python3.12 python3-certbot-nginx python3.12-venv python3.12-dev ripgrep software-properties-common tmux ubuntu-keyring vagrant wget
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -62,6 +62,7 @@ sudo apt install postgresql-18
 sudo snap install pinta redis redisinsight tree vlc yq yt-dlp
 sudo snap install go microk8s --classic
 sudo snap install gradle --channel=latest/edge --classic
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.7.2
 go install github.com/jesseduffield/lazydocker@latest
 go install github.com/jesseduffield/lazygit@latest
 go install github.com/air-verse/air@latest
